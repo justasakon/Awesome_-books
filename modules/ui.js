@@ -1,37 +1,6 @@
-class Book {
-  constructor(title, author) {
-    this.title = title;
-    this.author = author;
-  }
-}
+import Book from './book.js';
 
-// Book collection class
-class BookCollection {
-  constructor() {
-    this.books = JSON.parse(localStorage.getItem('books')) || [];
-  }
-
-  addBook(book) {
-    this.books.push(book);
-    this.save();
-  }
-
-  removeBook(index) {
-    this.books = this.books.filter((_, i) => i !== index);
-    this.save();
-  }
-
-  save() {
-    localStorage.setItem('books', JSON.stringify(this.books));
-  }
-
-  getBooks() {
-    return this.books;
-  }
-}
-
-// User interface
-class UserInterface {
+export default class UserInterface {
   constructor(collection) {
     this.collection = collection;
     this.bookList = document.getElementById('book_list');
@@ -47,11 +16,10 @@ class UserInterface {
     this.startClock();
   }
 
-  renderBooks() {
+  renderBooks = () => {
     this.bookList.innerHTML = '';
     this.collection.getBooks().forEach((book, index) => {
       const bookItem = document.createElement('li');
-
       const titleAuthorText = document.createElement('p');
       titleAuthorText.textContent = `'${book.title}' by ${book.author}`; // Corrected object properties
 
@@ -68,51 +36,51 @@ class UserInterface {
     });
   }
 
-  handleAdd() {
-    const title = this.titleInput.value.trim();
-    const author = this.authorInput.value.trim();
-    if (title === '' || author === '') { // Corrected variable names
-      return; // Prevent further execution if inputs are empty
-    }
-    const book = new Book(title, author);
-    this.collection.addBook(book);
-    this.titleInput.value = '';
-    this.authorInput.value = '';
-    this.renderBooks();
+handleAdd = () => {
+  const title = this.titleInput.value.trim();
+  const author = this.authorInput.value.trim();
+  if (title === '' || author === '') { // Corrected variable names
+    return; // Prevent further execution if inputs are empty
   }
+  const book = new Book(title, author);
+  this.collection.addBook(book);
+  this.titleInput.value = '';
+  this.authorInput.value = '';
+  this.renderBooks();
+}
 
-  setupEventListeners() {
+  setupEventListeners = () => {
     document.getElementById('bookslink').onclick = () => this.displayBooks();
     document.getElementById('addBooklink').onclick = () => this.displayAddBook();
     document.getElementById('Contactlink').onclick = () => this.displayContact();
   }
 
-  displayBooks() {
+  displayBooks = () => {
     this.hideAllSections();
     document.getElementById('books').classList.remove('hidden');
   }
 
-  displayAddBook() {
+  displayAddBook = () => {
     this.hideAllSections();
     document.getElementById('addBook').classList.remove('hidden');
   }
 
-  displayContact() {
+  displayContact = () => {
     this.hideAllSections();
     document.getElementById('contact').classList.remove('hidden');
   }
 
-  hideAllSections() {
+  hideAllSections = () => {
     document.querySelectorAll('section').forEach((section) => {
       section.classList.add('hidden');
     });
   }
 
-  initializeVisibility() {
-    this.displayBooks();
-  }
+   initializeVisibility =() => {
+     this.displayBooks();
+   }
 
-  startClock() {
+  startClock = () => {
     const el = document.getElementById('dateTime');
     if (!el) return;
 
@@ -130,7 +98,3 @@ class UserInterface {
     this.clockId = setInterval(tick, 1000);
   }
 }
-
-// Initialization
-const collection = new BookCollection();
-new UserInterface(collection);
