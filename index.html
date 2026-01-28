@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Awesome Books</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+
+</head>
+<nav>
+    <span>Awesome Books</span>
+    <div class="book_menu" id="menu">
+        <ul>
+            <li><a href="#books" id="bookslink">list |</a></li>
+            <li><a href="#ddBook" id="addBooklink">Add new |</a></li>
+            <li><a href="#contact" id="Contactlink">Contact </a></li>
+        </ul>
+    </div>
+    
+</nav>
+<body>
+    
+    <section id="books">
+        <div class="dateTime">
+        <p id="dateTime"></p>
+        
+    </div>
+        <div class="title">
+        <h1 class="hidden_h2"> All awesome books</h1>
+    </div>
+       <div class="booklists">
+         <ul id="book_list">
+            
+
+        </ul>
+        
+       </div>
+
+
+    </section>
+    <section id="addBook" class="hidden">
+        <div class="form_title">
+            <h2 >Add a new book</h2>
+        </div>
+        
+        <div class="book_form">
+            <form class="form" action="">
+                <div class="">
+                    <input type="text" placeholder="Title" maxlength="300" required id="title">
+                </div>
+                <div class="">
+                    <input type="text" placeholder="Author" maxlength="300" required id="author">
+                </div>
+                 <div class="button">
+                <button type="submit" id="submit_button"> Add</button>
+            </div>
+            
+            </form>
+           
+        </div>
+
+    </section>
+    <section id="contact" class="hidden">
+        <div class="Contact">
+            <h2 class="hidden_h2">Contact Information</h2>
+            <p>Do have any questions or you just want to say "Hello"?</p>
+            <span>You can reach out to us!</span>
+        <div class="tags">
+          <p>* our e-mail:nkwainbernice20@gmail.com</p>
+            <p>* our phone number:673761066 </p>
+            <p>* our addesse:Ikpola 22, 84503 Lagos, Nigeria</p>
+        </div>
+            
+           </div>
+       
+
+    </section>
+    <footer>
+        <p>Copyright ...</p>
+    </footer>
+    <script src="./index.js" type="module"></script>
+    
+</body>
+</html>
